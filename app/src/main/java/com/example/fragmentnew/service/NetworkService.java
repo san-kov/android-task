@@ -14,6 +14,12 @@ public class NetworkService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+    private NetworkService(String url) {
+        mRetrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
 
     public static NetworkService getInstance() {
         if (mInstance == null) {
@@ -22,6 +28,14 @@ public class NetworkService {
         return mInstance;
     }
 
+    public static NetworkService getInstance(String url) {
+        if (mInstance == null) {
+            mInstance = new NetworkService(url);
+        }
+        return mInstance;
+    }
+
 
     public RestService restService() {return mRetrofit.create(RestService.class);}
+    public GameInfoApi getGameApi() {return mRetrofit.create(GameInfoApi.class);}
 }
