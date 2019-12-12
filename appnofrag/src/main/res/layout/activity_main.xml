@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/ScrollView01"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-7dp"
+            android:backgroundTint="#FFFFFF"
+            android:indeterminate="true"
+            android:indeterminateTint="#2196F3"
+            android:max="100" />
+
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5pt"
+            android:layout_marginTop="15pt"
+            android:layout_marginRight="5pt"
+            android:gravity="center_horizontal"
+            android:scrollbars="vertical"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="12pt"></TextView>
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="165dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp" />
+        <RatingBar
+            android:id="@+id/ratingBar2"
+            style="?android:attr/ratingBarStyle"
+            android:layout_width="292dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"
+            android:background="@drawable/bordermain"
+            android:gravity="center"
+            android:isIndicator="true"
+            android:visibility="visible" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="287dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="226dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn"
+            android:text="@string/button" />
+        <View
+            android:layout_width="wrap_content"
+            android:background="@drawable/border"
+            android:layout_height="1dp" />
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:scrollbars="vertical"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="8pt"/>
+
+    </LinearLayout>
+    </ScrollView>
+
