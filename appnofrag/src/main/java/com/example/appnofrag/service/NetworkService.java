@@ -29,9 +29,7 @@ public class NetworkService {
     }
 
     public static NetworkService getInstance(String url) {
-        if (mInstance == null) {
-            mInstance = new NetworkService(url);
-        }
+        mInstance = new NetworkService(url);
         return mInstance;
     }
 
