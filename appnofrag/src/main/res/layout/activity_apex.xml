@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    android:background="@drawable/border">
+
     <ProgressBar
         android:id="@+id/progressbar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -32,7 +32,7 @@
             android:layout_marginTop="18dp" />
 
         <TextView
-            android:id="@+id/platformUserHandle"
+            android:id="@+id/avatarUrl"
             android:layout_width="163dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
@@ -49,7 +49,7 @@
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -82,16 +82,12 @@
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
-        android:layout_height="1dp" />
-
-    <View
-        android:layout_width="wrap_content"
-        android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -122,11 +118,12 @@
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -138,12 +135,11 @@
             android:layout_marginRight="5pt"
             android:gravity="left"
             android:scrollbars="vertical"
-            android:text="Deaths: "
+            android:text="KillsPerMatch: "
             android:textColor="#030303"
             android:textSize="12pt"></TextView>
-
         <TextView
-            android:id="@+id/deaths"
+            android:id="@+id/killsPerMatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
@@ -154,16 +150,16 @@
             android:text=""
             android:textColor="#030303"
             android:textSize="12pt"></TextView>
-
     </LinearLayout>
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -175,11 +171,11 @@
             android:layout_marginRight="5pt"
             android:gravity="left"
             android:scrollbars="vertical"
-            android:text="KD: "
+            android:text="WinningKills: "
             android:textColor="#030303"
             android:textSize="12pt"></TextView>
         <TextView
-            android:id="@+id/kd"
+            android:id="@+id/winningKills"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
@@ -194,11 +190,12 @@
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -229,11 +226,12 @@
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -245,11 +243,11 @@
             android:layout_marginRight="5pt"
             android:gravity="left"
             android:scrollbars="vertical"
-            android:text="Headshots: "
+            android:text="MatchesPlayed: "
             android:textColor="#030303"
             android:textSize="12pt"></TextView>
         <TextView
-            android:id="@+id/headshots"
+            android:id="@+id/matchesPlayed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
@@ -264,11 +262,12 @@
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -280,11 +279,11 @@
             android:layout_marginRight="5pt"
             android:gravity="left"
             android:scrollbars="vertical"
-            android:text="BombsPlanted: "
+            android:text="Revives: "
             android:textColor="#030303"
             android:textSize="12pt"></TextView>
         <TextView
-            android:id="@+id/bombsPlanted"
+            android:id="@+id/revives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
@@ -299,11 +298,12 @@
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -315,11 +315,11 @@
             android:layout_marginRight="5pt"
             android:gravity="left"
             android:scrollbars="vertical"
-            android:text="BombsDefused: "
+            android:text="SniperKills: "
             android:textColor="#030303"
             android:textSize="12pt"></TextView>
         <TextView
-            android:id="@+id/bombsDefused"
+            android:id="@+id/sniperKills"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
@@ -334,11 +334,12 @@
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4pt"
+
         android:orientation="horizontal">
 
         <TextView
@@ -350,11 +351,11 @@
             android:layout_marginRight="5pt"
             android:gravity="left"
             android:scrollbars="vertical"
-            android:text="HostagesRescued: "
+            android:text="RankScore: "
             android:textColor="#030303"
             android:textSize="12pt"></TextView>
         <TextView
-            android:id="@+id/hostagesRescued"
+            android:id="@+id/rankScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
@@ -369,5 +370,7 @@
     <View
         android:layout_width="wrap_content"
         android:background="@drawable/border"
+        android:layout_marginTop="4pt"
         android:layout_height="1dp" />
+
 </LinearLayout>
