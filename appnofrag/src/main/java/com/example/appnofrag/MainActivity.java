@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
         if (gameName.getText().equals("Counter-Strike: Global Offensive")) {
              intent = new Intent(this, CsGoStatActivity.class);
         }
+         else if (gameName.getText().equals("Overwatch")) {
+             intent = new Intent(this, OverwatchStatActivity.class);
+        }
         assert intent != null;
         intent.putExtra("search", searchText.getQuery().toString());
         startActivity(intent);
@@ -89,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         String str;
         if (item.getTitle().equals("Apex")) {
-            str = "apex";
+            str = "apex-legends";
         } else if (item.getTitle().equals("CS:GO")) {
             str = "counter-strike-global-offensive";
         } else if (item.getTitle().equals("Overwatch")) {

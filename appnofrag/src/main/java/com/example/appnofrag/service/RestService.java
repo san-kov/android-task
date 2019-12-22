@@ -2,12 +2,11 @@ package com.example.appnofrag.service;
 
 import com.example.appnofrag.domain.Data;
 import com.example.appnofrag.domain.csgo.GameResponse;
-
+import com.example.appnofrag.domain.overwatch.OverwatchResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -27,4 +26,8 @@ public interface RestService {
     @Headers("TRN-Api-Key:60b16b1e-ffe5-4049-9a8a-0d9f1408c9bc")
     @GET("csgo/standard/profile/{platform}/{id}")
     Call<GameResponse> getPlayerStats(@Path("platform") String platform, @Path("id") String id);
+
+    @Headers("TRN-Api-Key:60b16b1e-ffe5-4049-9a8a-0d9f1408c9bc")
+    @GET("overwatch/standard/profile/{platform}/{id}")
+    Call<OverwatchResponse> getOverwatchPlayerStat(@Path("platform") String platform, @Path("id") String id);
 }
