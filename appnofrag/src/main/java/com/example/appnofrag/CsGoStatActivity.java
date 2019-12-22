@@ -3,6 +3,8 @@ package com.example.appnofrag;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,6 +31,7 @@ public class CsGoStatActivity extends AppCompatActivity {
     public static TextView bombsDefused;
     public static TextView hostagesRescued;
     public static ImageView avatar;
+    public static ProgressBar kdStat;
 
     private final NetworkService networkService2 = NetworkService.getInstance("https://public-api.tracker.gg/v2/");
     private RestService service;
@@ -52,6 +55,7 @@ public class CsGoStatActivity extends AppCompatActivity {
         hostagesRescued = findViewById(R.id.hostagesRescued);
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.INVISIBLE);
+        kdStat = findViewById(R.id.kdStat);
 
 
         Intent intent = getIntent();
@@ -60,5 +64,6 @@ public class CsGoStatActivity extends AppCompatActivity {
         HttpRequest request = new HttpRequest(service, dataString);
         request.execute();
         playerName.setText(dataString);
+        kdStat.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#1abc9c")));
     }
 }

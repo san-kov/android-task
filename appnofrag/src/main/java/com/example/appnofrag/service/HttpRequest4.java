@@ -1,5 +1,7 @@
 package com.example.appnofrag.service;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.AsyncTask;
 import android.transition.Transition;
 import android.util.Log;
@@ -7,6 +9,7 @@ import android.view.View;
 
 import com.example.appnofrag.ApexActivity;
 import com.example.appnofrag.MainActivity;
+import com.example.appnofrag.OverwatchStatActivity;
 import com.example.appnofrag.domain.Data;
 import com.example.appnofrag.domain.apex.ApexResponse;
 
@@ -62,6 +65,15 @@ public class HttpRequest4 extends AsyncTask<Void, Void, Void> {
             ApexActivity.reviews.setText(data.getData().getSegments().get(0).getStats().getRevives().getDisplayValue());
             ApexActivity.sniperKills.setText(data.getData().getSegments().get(0).getStats().getSniperKills().getDisplayValue());
            Picasso.get().load(data.getData().getPlatformInfo().getAvatarUrl()).into(ApexActivity.avatar);
+            int valueOfBar = (int) (Double.parseDouble(data.getData().getSegments().get(0).getStats().getKillsPerMatch().getDisplayValue()) * 100);
+
+            ApexActivity.progressBar.setVisibility(View.INVISIBLE);
+            ObjectAnimator progressAnimator = ObjectAnimator.ofInt(ApexActivity.kdStat, "progress", 0, valueOfBar);
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(progressAnimator);
+            animatorSet.setDuration(1500);
+            animatorSet.start();
+
 
         } catch (Exception e) {
             ApexActivity.playerName.setText("Player Not Found");

@@ -1,13 +1,7 @@
 package com.example.appnofrag;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +11,9 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appnofrag.service.GameInfoApi;
 import com.example.appnofrag.service.HttpRequest2;

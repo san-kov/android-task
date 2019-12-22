@@ -10,11 +10,11 @@
         android:orderInCategory="2"
         android:title="@string/cs_go">
     </item>
-    <item
-        android:id="@+id/menu_division2"
-        android:orderInCategory="3"
-        android:title="@string/division_2">
-    </item>
+<!--    <item-->
+<!--        android:id="@+id/menu_division2"-->
+<!--        android:orderInCategory="3"-->
+<!--        android:title="@string/division_2">-->
+<!--    </item>-->
     <item
         android:id="@+id/menu_overwatch"
         android:orderInCategory="4"

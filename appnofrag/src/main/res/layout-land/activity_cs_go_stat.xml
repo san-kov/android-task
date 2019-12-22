@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
+<ScrollView
+    android:id="@+id/ScrollView01"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    android:background="@drawable/border">
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <ProgressBar
         android:id="@+id/progressbar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -33,7 +36,7 @@
 
         <TextView
             android:id="@+id/platformUserHandle"
-            android:layout_width="163dp"
+            android:layout_width="237dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
             android:layout_marginTop="8pt"
@@ -189,14 +192,16 @@
             android:scrollbars="vertical"
             android:text=""
             android:textColor="#030303"
-            android:textSize="12pt"></TextView>
+            android:textSize="12pt">
+
+        </TextView>
         <ProgressBar
             android:id="@+id/kdStat"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="155dp"
+            android:layout_width="209dp"
             android:layout_height="26dp"
-            android:max="1000"
-            android:layout_marginTop="9dp"/>
+            android:layout_marginTop="9dp"
+            android:max="1000" />
     </LinearLayout>
     <View
         android:layout_width="wrap_content"
@@ -378,3 +383,4 @@
         android:background="@drawable/border"
         android:layout_height="1dp" />
 </LinearLayout>
+</ScrollView>

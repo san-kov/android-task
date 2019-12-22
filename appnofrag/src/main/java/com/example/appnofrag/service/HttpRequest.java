@@ -1,17 +1,16 @@
 package com.example.appnofrag.service;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.AsyncTask;
-import android.transition.Transition;
 import android.util.Log;
 import android.view.View;
 
 import com.example.appnofrag.CsGoStatActivity;
-import com.example.appnofrag.MainActivity;
+import com.example.appnofrag.OverwatchStatActivity;
 import com.example.appnofrag.domain.Data;
 import com.example.appnofrag.domain.csgo.GameResponse;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -67,6 +66,13 @@ public class HttpRequest extends AsyncTask<Void, Void, Void> {
 
             Picasso.get().load(data.getPlatformInfos().get(0).getAvatarUrl()).into(CsGoStatActivity.avatar);
 
+            int valueOfBar = (int) (Double.parseDouble(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue()) * 100);
+            CsGoStatActivity.progressBar.setVisibility(View.INVISIBLE);
+            ObjectAnimator progressAnimator = ObjectAnimator.ofInt(CsGoStatActivity.kdStat, "progress", 0, valueOfBar);
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(progressAnimator);
+            animatorSet.setDuration(1500);
+            animatorSet.start();
 
         } catch (Exception e) {
             CsGoStatActivity.playerName.setText("Player Not Found");

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView
     android:id="@+id/ScrollView01"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:background="@drawable/dims">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#fff">
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -29,13 +31,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5pt"
-            android:layout_marginTop="15pt"
+            android:layout_marginTop="3pt"
             android:layout_marginRight="5pt"
             android:gravity="center_horizontal"
             android:scrollbars="vertical"
             android:text=""
             android:textColor="#000000"
-            android:textSize="12pt"></TextView>
+            android:textSize="12pt">
+
+        </TextView>
 
 
         <ImageView
@@ -50,7 +54,7 @@
             style="?android:attr/ratingBarStyle"
             android:layout_width="292dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="35dp"
+            android:layout_marginHorizontal="176dp"
             android:background="@drawable/bordermain"
             android:gravity="center"
             android:isIndicator="true"
@@ -60,18 +64,18 @@
             android:id="@+id/searchView"
             android:layout_width="287dp"
             android:layout_height="31dp"
-            android:layout_marginStart="35dp"
+            android:layout_marginStart="176dp"
             android:layout_marginTop="16dp" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="286dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="226dp"
+            android:layout_marginStart="176dp"
             android:layout_marginTop="12dp"
-            android:textColor="#ffffff"
             android:background="@drawable/btn"
-            android:text="@string/button" />
+            android:text="@string/button"
+            android:textColor="#ffffff" />
         <View
             android:layout_width="wrap_content"
             android:background="@drawable/border"
@@ -88,5 +92,4 @@
             android:textSize="8pt"/>
 
     </LinearLayout>
-    </ScrollView>
-
+</ScrollView>

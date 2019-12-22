@@ -3,6 +3,8 @@ package com.example.appnofrag;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,6 +30,7 @@ public class ApexActivity extends AppCompatActivity {
     public static TextView sniperKills;
     public static TextView rankScore;
     public static ImageView avatar;
+    public static ProgressBar kdStat;
 
     private final NetworkService networkService2 = NetworkService.getInstance("https://public-api.tracker.gg/v2/");
     private RestService service;
@@ -51,6 +54,7 @@ public class ApexActivity extends AppCompatActivity {
         winningKills = findViewById(R.id.winningKills);
         sniperKills = findViewById(R.id.sniperKills);
         rankScore = findViewById(R.id.rankScore);
+        kdStat = findViewById(R.id.kdStat);
 
         progressBar = findViewById(R.id.progressbar);
 
@@ -63,5 +67,6 @@ public class ApexActivity extends AppCompatActivity {
         HttpRequest4 request = new HttpRequest4(service, dataString);
         request.execute();
         playerName.setText(dataString);
+        kdStat.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#1abc9c")));
     }
 }

@@ -35,6 +35,7 @@ public class OverwatchStatActivity extends AppCompatActivity {
     public static ProgressBar kdStat;
     public static int valueOfBar;
 
+
     public static ImageView avatar;
 
     private final NetworkService networkService2 = NetworkService.getInstance("https://public-api.tracker.gg/v2/");
@@ -70,7 +71,7 @@ public class OverwatchStatActivity extends AppCompatActivity {
         HttpRequest3 request = new HttpRequest3(service, dataString);
         request.execute();
         playerName.setText(dataString);
-        kdStat.setProgressTintList(ColorStateList.valueOf(Color.BLUE));
+        kdStat.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#1abc9c")));
 
 
     }
