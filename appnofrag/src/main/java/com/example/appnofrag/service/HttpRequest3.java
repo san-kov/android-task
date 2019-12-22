@@ -48,28 +48,34 @@ public class HttpRequest3 extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        OverwatchStatActivity.playerName.setText(playerData.getData().getPlatformInfo().getPlatformUserHandle());
-        OverwatchStatActivity.platform.setText(playerData.getData().getPlatformInfo().getPlatformSlug());
-        OverwatchStatActivity.timePlayed.setText(playerData.getData().getSegments().get(0).getStats().getTimePlayed().getDisplayValue());
-        OverwatchStatActivity.wins.setText(playerData.getData().getSegments().get(0).getStats().getWins().getDisplayValue());
-        OverwatchStatActivity.matchesPlayed.setText(playerData.getData().getSegments().get(0).getStats().getMatchesPlayed().getDisplayValue());
-        OverwatchStatActivity.goldMedals.setText(playerData.getData().getSegments().get(0).getStats().getGoldMedals().getDisplayValue());
-        OverwatchStatActivity.damageDone.setText(playerData.getData().getSegments().get(0).getStats().getDamageDone().getDisplayValue());
-        OverwatchStatActivity.soloKills.setText(playerData.getData().getSegments().get(0).getStats().getSoloKills().getDisplayValue());
-        OverwatchStatActivity.kd.setText(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue());
-        OverwatchStatActivity.multiKills.setText(playerData.getData().getSegments().get(0).getStats().getMultiKills().getDisplayValue());
-        OverwatchStatActivity.mostHealingDone.setText(playerData.getData().getSegments().get(0).getStats().getMostHealingDone().getDisplayValue());
-        OverwatchStatActivity.valueOfBar = (int)(Double.parseDouble(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue()) * 100);
-        int valueOfBar = (int)(Double.parseDouble(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue()) * 100);
+        try {
+            OverwatchStatActivity.playerName.setText(playerData.getData().getPlatformInfo().getPlatformUserHandle());
+            OverwatchStatActivity.platform.setText(playerData.getData().getPlatformInfo().getPlatformSlug());
+            OverwatchStatActivity.timePlayed.setText(playerData.getData().getSegments().get(0).getStats().getTimePlayed().getDisplayValue());
+            OverwatchStatActivity.wins.setText(playerData.getData().getSegments().get(0).getStats().getWins().getDisplayValue());
+            OverwatchStatActivity.matchesPlayed.setText(playerData.getData().getSegments().get(0).getStats().getMatchesPlayed().getDisplayValue());
+            OverwatchStatActivity.goldMedals.setText(playerData.getData().getSegments().get(0).getStats().getGoldMedals().getDisplayValue());
+            OverwatchStatActivity.damageDone.setText(playerData.getData().getSegments().get(0).getStats().getDamageDone().getDisplayValue());
+            OverwatchStatActivity.soloKills.setText(playerData.getData().getSegments().get(0).getStats().getSoloKills().getDisplayValue());
+            OverwatchStatActivity.kd.setText(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue());
+            OverwatchStatActivity.multiKills.setText(playerData.getData().getSegments().get(0).getStats().getMultiKills().getDisplayValue());
+            OverwatchStatActivity.mostHealingDone.setText(playerData.getData().getSegments().get(0).getStats().getMostHealingDone().getDisplayValue());
+            OverwatchStatActivity.valueOfBar = (int) (Double.parseDouble(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue()) * 100);
+            int valueOfBar = (int) (Double.parseDouble(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue()) * 100);
 
-        Picasso.get().load("https://assets1.ignimgs.com/2018/02/23/overwatch-button-v2-1519416414955.jpg").into(OverwatchStatActivity.avatar);
+            Picasso.get().load("https://assets1.ignimgs.com/2018/02/23/overwatch-button-v2-1519416414955.jpg").into(OverwatchStatActivity.avatar);
 
-        OverwatchStatActivity.progressBar.setVisibility(View.INVISIBLE);
-        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(OverwatchStatActivity.kdStat, "progress", 0, valueOfBar);
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(progressAnimator);
-        animatorSet.setDuration(1500);
-        animatorSet.start();
+            OverwatchStatActivity.progressBar.setVisibility(View.INVISIBLE);
+            ObjectAnimator progressAnimator = ObjectAnimator.ofInt(OverwatchStatActivity.kdStat, "progress", 0, valueOfBar);
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(progressAnimator);
+            animatorSet.setDuration(1500);
+            animatorSet.start();
+        } catch (Exception e) {
+            OverwatchStatActivity.progressBar.setVisibility(View.INVISIBLE);
+            OverwatchStatActivity.playerName.setText("Player not found");
+            Picasso.get().load("https://sitechecker.pro/wp-content/uploads/2017/12/404.png").into(OverwatchStatActivity.avatar);
+        }
         //DashboardFragment.data.setText(data.getPlatformInfos().get(0).getPlatformSlug());
     }
 }
