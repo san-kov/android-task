@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = null;
         if (gameName.getText().equals("Counter-Strike: Global Offensive")) {
              intent = new Intent(this, CsGoStatActivity.class);
+        } else if (gameName.getText().equals("Apex Legends")) {
+            intent = new Intent(this, ApexActivity.class);
         }
          else if (gameName.getText().equals("Overwatch")) {
              intent = new Intent(this, OverwatchStatActivity.class);

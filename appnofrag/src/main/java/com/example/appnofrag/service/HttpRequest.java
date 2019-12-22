@@ -1,6 +1,7 @@
 package com.example.appnofrag.service;
 
 import android.os.AsyncTask;
+import android.transition.Transition;
 import android.util.Log;
 import android.view.View;
 
@@ -35,7 +36,7 @@ public class HttpRequest extends AsyncTask<Void, Void, Void> {
                 Call<GameResponse> playerCall = service.getPlayerStats("steam", data.getPlatformInfos().get(0).getPlatformUserId());
                 Response<GameResponse> res = playerCall.execute();
                 playerData = res.body();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Log.e("ProjActivity", "IOException", e);
                 e.printStackTrace();
 
@@ -51,21 +52,29 @@ public class HttpRequest extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        CsGoStatActivity.playerName.setText(playerData.getData().getPlatformInfo().getPlatformUserHandle());
+        try {
+            CsGoStatActivity.playerName.setText(playerData.getData().getPlatformInfo().getPlatformUserHandle());
 
-        CsGoStatActivity.platform.setText(playerData.getData().getPlatformInfo().getPlatformSlug());
-        CsGoStatActivity.hostagesRescued.setText(playerData.getData().getSegments().get(0).getStats().getHostagesRescued().getDisplayValue());
-        CsGoStatActivity.bombsPlanted.setText(playerData.getData().getSegments().get(0).getStats().getBombsPlanted().getDisplayValue());
-        CsGoStatActivity.kills.setText(playerData.getData().getSegments().get(0).getStats().getKills().getDisplayValue());
-        CsGoStatActivity.deaths.setText(playerData.getData().getSegments().get(0).getStats().getDeaths().getDisplayValue());
-        CsGoStatActivity.bombsDefused.setText(playerData.getData().getSegments().get(0).getStats().getBombsDefused().getDisplayValue());
-        CsGoStatActivity.headshots.setText(playerData.getData().getSegments().get(0).getStats().getHeadshots().getDisplayValue());
-        CsGoStatActivity.kd.setText(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue());
-        CsGoStatActivity.damage.setText(playerData.getData().getSegments().get(0).getStats().getDamage().getDisplayValue());
+            CsGoStatActivity.platform.setText(playerData.getData().getPlatformInfo().getPlatformSlug());
+            CsGoStatActivity.hostagesRescued.setText(playerData.getData().getSegments().get(0).getStats().getHostagesRescued().getDisplayValue());
+            CsGoStatActivity.bombsPlanted.setText(playerData.getData().getSegments().get(0).getStats().getBombsPlanted().getDisplayValue());
+            CsGoStatActivity.kills.setText(playerData.getData().getSegments().get(0).getStats().getKills().getDisplayValue());
+            CsGoStatActivity.deaths.setText(playerData.getData().getSegments().get(0).getStats().getDeaths().getDisplayValue());
+            CsGoStatActivity.bombsDefused.setText(playerData.getData().getSegments().get(0).getStats().getBombsDefused().getDisplayValue());
+            CsGoStatActivity.headshots.setText(playerData.getData().getSegments().get(0).getStats().getHeadshots().getDisplayValue());
+            CsGoStatActivity.kd.setText(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue());
+            CsGoStatActivity.damage.setText(playerData.getData().getSegments().get(0).getStats().getDamage().getDisplayValue());
 
-        Picasso.get().load(data.getPlatformInfos().get(0).getAvatarUrl()).into(CsGoStatActivity.avatar);
+            Picasso.get().load(data.getPlatformInfos().get(0).getAvatarUrl()).into(CsGoStatActivity.avatar);
 
-        CsGoStatActivity.progressBar.setVisibility(View.INVISIBLE);
+
+        } catch (Exception e) {
+            CsGoStatActivity.playerName.setText("Player Not Found");
+            Picasso.get().load("https://sitechecker.pro/wp-content/uploads/2017/12/404.png").into(CsGoStatActivity.avatar);
+        } finally {
+            CsGoStatActivity.progressBar.setVisibility(View.INVISIBLE);
+
+        }
         //DashboardFragment.data.setText(data.getPlatformInfos().get(0).getPlatformSlug());
     }
 }
