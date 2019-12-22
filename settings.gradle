@@ -1,2 +1,2 @@
-include ':app', ':appnofrag'
+include ':app', ':appnofrag', ':myapplication'
 rootProject.name='fragmentNew'

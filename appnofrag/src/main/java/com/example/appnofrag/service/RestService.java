@@ -1,10 +1,14 @@
 package com.example.appnofrag.service;
 
 import com.example.appnofrag.domain.Data;
+import com.example.appnofrag.domain.csgo.GameResponse;
+
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RestService {
@@ -20,4 +24,7 @@ public interface RestService {
     @GET("csgo/standard/search")
     Call<Data> getPlayerBySearchQuery(@Query("platform") String platform, @Query("query") String query);
 
+    @Headers("TRN-Api-Key:60b16b1e-ffe5-4049-9a8a-0d9f1408c9bc")
+    @GET("csgo/standard/profile/{platform}/{id}")
+    Call<GameResponse> getPlayerStats(@Path("platform") String platform, @Path("id") String id);
 }

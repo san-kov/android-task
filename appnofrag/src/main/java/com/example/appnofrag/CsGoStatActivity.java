@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -13,11 +14,22 @@ import com.example.appnofrag.service.HttpRequest;
 import com.example.appnofrag.service.HttpRequest2;
 import com.example.appnofrag.service.NetworkService;
 import com.example.appnofrag.service.RestService;
+import com.example.appnofrag.R;
 
 public class CsGoStatActivity extends AppCompatActivity {
     public static TextView playerName;
     public static TextView platform;
     public static ProgressBar progressBar;
+    public static TextView rank;
+    public static TextView kills;
+    public static TextView deaths;
+    public static TextView kd;
+    public static TextView damage;
+    public static TextView headshots;
+    public static TextView bombsPlanted;
+    public static TextView bombsDefused;
+    public static TextView hostagesRescued;
+    public static ImageView avatar;
 
     private final NetworkService networkService2 = NetworkService.getInstance("https://public-api.tracker.gg/v2/");
     private RestService service;
@@ -27,15 +39,26 @@ public class CsGoStatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cs_go_stat);
 
-        playerName = findViewById(R.id.playerName);
+        playerName = findViewById(R.id.platformUserHandle);
         platform = findViewById(R.id.platform);
+        rank = findViewById(R.id.rank);
+        kills = findViewById(R.id.kills);
+        deaths = findViewById(R.id.deaths);
+        headshots = findViewById(R.id.headshots);
+        bombsPlanted = findViewById(R.id.bombsPlanted);
+        damage = findViewById(R.id.damage);
+        bombsDefused = findViewById(R.id.damage);
+        avatar = findViewById(R.id.imageView2);
+        kd = findViewById(R.id.kd);
+        hostagesRescued = findViewById(R.id.hostagesRescued);
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.INVISIBLE);
+
 
         Intent intent = getIntent();
         String dataString = intent.getStringExtra("search");
         service = networkService2.restService();
-        HttpRequest request = new HttpRequest(service);
+        HttpRequest request = new HttpRequest(service, dataString);
         request.execute();
         playerName.setText(dataString);
     }

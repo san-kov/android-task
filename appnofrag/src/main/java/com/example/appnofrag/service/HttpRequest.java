@@ -7,6 +7,8 @@ import android.view.View;
 import com.example.appnofrag.CsGoStatActivity;
 import com.example.appnofrag.MainActivity;
 import com.example.appnofrag.domain.Data;
+import com.example.appnofrag.domain.csgo.GameResponse;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -15,18 +17,24 @@ import retrofit2.Response;
 
 public class HttpRequest extends AsyncTask<Void, Void, Void> {
     Data data;
+    GameResponse playerData;
     private RestService service;
-    public HttpRequest(RestService service) {
+    private String player;
+    public HttpRequest(RestService service, String player) {
         this.service = service;
+        this.player = player;
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
 
-            Call<Data> call = service.getPlayerBySearchQuery("steam", "xawdxawdx");
+            Call<Data> call = service.getPlayerBySearchQuery("steam", player);
             try {
                 Response<Data> rp  =  call.execute();
                 data = rp.body();
+                Call<GameResponse> playerCall = service.getPlayerStats("steam", data.getPlatformInfos().get(0).getPlatformUserId());
+                Response<GameResponse> res = playerCall.execute();
+                playerData = res.body();
             } catch (IOException e) {
                 Log.e("ProjActivity", "IOException", e);
                 e.printStackTrace();
@@ -43,7 +51,20 @@ public class HttpRequest extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        CsGoStatActivity.platform.setText(data.getPlatformInfos().get(0).getPlatformSlug());
+        CsGoStatActivity.playerName.setText(playerData.getData().getPlatformInfo().getPlatformUserHandle());
+
+        CsGoStatActivity.platform.setText(playerData.getData().getPlatformInfo().getPlatformSlug());
+        CsGoStatActivity.hostagesRescued.setText(playerData.getData().getSegments().get(0).getStats().getHostagesRescued().getDisplayValue());
+        CsGoStatActivity.bombsPlanted.setText(playerData.getData().getSegments().get(0).getStats().getBombsPlanted().getDisplayValue());
+        CsGoStatActivity.kills.setText(playerData.getData().getSegments().get(0).getStats().getKills().getDisplayValue());
+        CsGoStatActivity.deaths.setText(playerData.getData().getSegments().get(0).getStats().getDeaths().getDisplayValue());
+        CsGoStatActivity.bombsDefused.setText(playerData.getData().getSegments().get(0).getStats().getBombsDefused().getDisplayValue());
+        CsGoStatActivity.headshots.setText(playerData.getData().getSegments().get(0).getStats().getHeadshots().getDisplayValue());
+        CsGoStatActivity.kd.setText(playerData.getData().getSegments().get(0).getStats().getKd().getDisplayValue());
+        CsGoStatActivity.damage.setText(playerData.getData().getSegments().get(0).getStats().getDamage().getDisplayValue());
+
+        Picasso.get().load(data.getPlatformInfos().get(0).getAvatarUrl()).into(CsGoStatActivity.avatar);
+
         CsGoStatActivity.progressBar.setVisibility(View.INVISIBLE);
         //DashboardFragment.data.setText(data.getPlatformInfos().get(0).getPlatformSlug());
     }
